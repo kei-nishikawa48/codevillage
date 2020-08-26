@@ -1,0 +1,67 @@
+.menu {
+  width: 84%;
+  left: 7.87%;
+  margin: 261px auto 0 auto;
+  @include tab {
+    width: 89.3%;
+    margin: 60px auto;
+  }
+  .item {
+    @include tab {
+      margin-bottom: 60px;
+    }
+  }
+  &__item {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    @include tab {
+      
+      flex-direction: column;
+    }
+    img {
+      width: 100%;
+      @include tab {
+        margin-left: 15%;
+        max-width: 70%;
+      }
+      @include sp {
+        max-width: 100%;
+        margin-left: 0;
+      }
+    }
+    h3 {
+      font-size: 3rem;
+      text-align: center;
+      padding: 37px;
+      @include tab {
+        text-align: left;
+        padding: 30px 13px;
+      }
+    }
+    p {
+      font-size: 1.6rem;
+      line-height: 30px;
+      padding: 0 15px 34px 15px;
+      @include tab {
+        padding: 0 13px 24px 13px;
+      }
+    }
+    
+    &__box {
+      width: 21%;
+      margin-right: 5rem;
+      @include tab {
+        width: 100%;
+      }
+
+    }
+
+  }
+}
+
+
+.prace {
+  text-align: right;
+}
+
