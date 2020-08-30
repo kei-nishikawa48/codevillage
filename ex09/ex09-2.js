@@ -16,6 +16,8 @@ add.addEventListener("click", (event) => {
 })
 
 remove.addEventListener("click", (event) => {
-  list.removeChild(list.lastChild)
+    if (list.children.length > 0){
+      list.removeChild(list.lastChild)
+    }
 })
 
