@@ -1,6 +1,30 @@
-import React from 'react';
+import React,{useState, useContext} from 'react';
+import firebase from "../config/firebase"
+import { AuthContext } from '../AuthService';
+import { Redirect } from 'react-router-dom';
 
-const Login = () => {
+
+const Login = ({histrory}) => {
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  const user=useContext(AuthContext)
+  if(user){
+    return <Redirect to="/" />
+  }
+  const handleSubmit = (e) => {
+    e.preventDefault()
+
+    firebase.auth().signInWithEmailAndPassword(email, password)
+    .then(()=>{
+      histrory.push("/")
+    })
+      .catch(err => {
+        console.log(err)
+      })
+  }
+
+  
+
   return (
     <>
       <h1>Login</h1>
@@ -10,6 +34,9 @@ const Login = () => {
             E-mail
           </label>
           <input
+            onChange={e=>{
+              setEmail(e.target.value)
+            }}
             type="email"
             id="email"
             name="email"
@@ -19,13 +46,16 @@ const Login = () => {
         <div>
           <label htmlFor="password">Password</label>
           <input
+            onChange={e=>{
+              setPassword(e.target.value)
+            }}
             type='password'
             id='password'
-            name='email'
+            name='password'
             placeholder='password'
           />
         </div>
-        <button type="submit">Login</button>
+        <button type="submit" onSubmit={handleSubmit}>Login</button>
       </form>
     </>
   )

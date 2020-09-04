@@ -4,19 +4,19 @@ import firebase from "../config/firebase"
 const SignUp = () => {
   const [email,setEmail]=useState("")
   const [password,setPassword]=useState("")
-  
-  const em = document.getElementById("email")
-  const pass = document.getElementById("password")
-
+  const em=document.getElementById("email")
+  const pass=document.getElementById("password")
+ 
   
   const handleSubmit =(e)=>{
     e.preventDefault()
+    em.value=""
+    pass.value=""
     firebase.auth().createUserWithEmailAndPassword(email,password)
         .catch(err=>{
           console.log(err)  
         })
-    em.value = ""
-    pass.value = ""
+ 
   }
   return (
     <div>
