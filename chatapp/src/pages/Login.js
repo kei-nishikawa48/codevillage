@@ -4,19 +4,18 @@ import { AuthContext } from '../AuthService';
 import { Redirect } from 'react-router-dom';
 
 
-const Login = ({histrory}) => {
+const Login = ({history}) => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const user=useContext(AuthContext)
   if(user){
-    return <Redirect to="/" />
+    return <Redirect to="/"/>
   }
   const handleSubmit = (e) => {
     e.preventDefault()
-
     firebase.auth().signInWithEmailAndPassword(email, password)
     .then(()=>{
-      histrory.push("/")
+      history.push("/")
     })
       .catch(err => {
         console.log(err)
