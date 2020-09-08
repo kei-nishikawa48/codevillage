@@ -1,6 +1,7 @@
-import React, {useState ,useEffect} from 'react'
+import React, {useState ,useEffect, useContext} from 'react'
 import firebase from "../config/firebase"
 import "firebase/firestore"
+import { AuthContext } from '../AuthService'
 
 const Room = () => {
   const [messages, setMessages]=useState(null)
@@ -16,6 +17,13 @@ const Room = () => {
     })
   },[])
 
+  const user = useContext(AuthContext)
+  const handleSubmit=()=>{
+    firebase.firestore().collection("messages").add({
+      content:value,
+      user:user.displayName
+    })
+  }
 
   return (
     <>
@@ -25,10 +33,10 @@ const Room = () => {
           
         </li>
       </ul>
-      <form>
+      <form onSubmit={handleSubmit}>
         <input 
           type="text"
-          onchange={e=>
+          onChange={e=>
             setValue(e.target.value)}
           value={value}
           />

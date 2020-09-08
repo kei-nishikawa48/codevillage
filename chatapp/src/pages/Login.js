@@ -54,7 +54,7 @@ const Login = ({history}) => {
             placeholder='password'
           />
         </div>
-        <button type="submit" >Login</button>
+        <button type="submit">Login</button>
       </form>
     </>
   )
