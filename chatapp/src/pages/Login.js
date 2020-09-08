@@ -17,8 +17,8 @@ const Login = ({history}) => {
     .then(()=>{
       history.push("/")
     })
-      .catch(err => {
-        console.log(err)
+    .catch(err => {
+      console.log(err)
       })
   }
 
@@ -27,7 +27,7 @@ const Login = ({history}) => {
   return (
     <>
       <h1>Login</h1>
-      <form>
+      <form onSubmit={handleSubmit}>
         <div>
           <label htmlFor="email">
             E-mail
@@ -54,7 +54,7 @@ const Login = ({history}) => {
             placeholder='password'
           />
         </div>
-        <button type="submit" onSubmit={handleSubmit}>Login</button>
+        <button type="submit" >Login</button>
       </form>
     </>
   )
